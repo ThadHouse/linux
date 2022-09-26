@@ -19,9 +19,10 @@ tgtfixdep	:= $(TGTPRE)fixdep
 always += $(tgtfixdep)
 
 $(obj)/$(tgtfixdep) : $(src)/fixdep.c
+	echo $(CC)
+	echo $(Q)
 	$(Q)$(CC) $(TGT_EXTRACFLAGS) $(CFLAGS) -o $@ $<
 endif
 
 # fixdep is needed to compile other host programs
 $(addprefix $(obj)/,$(filter-out fixdep,$(always))): $(obj)/fixdep
-
